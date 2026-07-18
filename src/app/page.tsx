@@ -619,7 +619,7 @@ function LegalPage({ doc }: { doc: LegalDoc }) {
 // -----------------------------------------------------------------
 // Contact Us
 // -----------------------------------------------------------------
-function Contact() {
+function Contact({ onNavigate }: { onNavigate: (v: ViewId) => void }) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [serverMsg, setServerMsg] = useState('')
@@ -751,7 +751,7 @@ function Contact() {
             </Button>
             <p className="mt-3 text-center text-xs text-white/40">
               By submitting, you agree to our{' '}
-              <button type="button" onClick={() => {}} className="underline">Privacy Policy</button>.
+              <button type="button" onClick={() => onNavigate('privacy')} className="underline">Privacy Policy</button>.
               We never share your data.
             </p>
           </form>
@@ -822,7 +822,9 @@ export default function Home() {
     }
     document.title = titles[view]
     // accessibility: announce the view change
-    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
+    if (typeof window !== 'undefined' && !['features', 'screenshots', 'faq'].includes(view)) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }, [view])
 
   const navigate = useCallback((v: ViewId) => {
@@ -830,8 +832,13 @@ export default function Home() {
     if (typeof window !== 'undefined') {
       window.location.hash = v === 'home' ? '' : v
       // scroll to top for "page" changes; keep scroll for in-page anchors
-      if (v !== 'home') window.scrollTo({ top: 0, behavior: 'smooth' })
-      else window.scrollTo({ top: 0, behavior: 'smooth' })
+      if (['features', 'screenshots', 'faq'].includes(v)) {
+        setTimeout(() => {
+          document.getElementById(v)?.scrollIntoView({ behavior: 'smooth' })
+        }, 10)
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
       // update document title for SEO/UX
       const titles: Record<ViewId, string> = {
         home: `${SITE.name} — ${SITE.tagline}`,
@@ -853,7 +860,7 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Home view — contains all in-page sections, always in DOM for SEO */}
-        <div className={view === 'home' ? 'block' : 'hidden'}>
+        <div className={['home', 'features', 'screenshots', 'faq'].includes(view) ? 'block' : 'hidden'}>
           <Hero onNavigate={navigate} />
           <Features />
           <Screenshots />
@@ -872,7 +879,7 @@ export default function Home() {
           <LegalPage doc={SUBSCRIPTION_TERMS} />
         </div>
         <div className={view === 'contact' ? 'block' : 'hidden'}>
-          <Contact />
+          <Contact onNavigate={navigate} />
         </div>
       </main>
 
