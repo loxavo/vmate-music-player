@@ -7,13 +7,13 @@ export const SITE = {
   tagline: 'Your Music. Offline. Anywhere.',
   description:
     'VMate Music Player is a premium offline music player for iPhone. Play your local music anywhere with a 10-band equalizer, live lyrics, hi-res audio, smart library organization and zero ads.',
-  url: 'https://vmate.app',
+  url: 'https://loxavo.site',
   locale: 'en_US',
-  email: 'support@vmate.app',
-  supportEmail: 'support@vmate.app',
-  privacyEmail: 'privacy@vmate.app',
+  email: 'support@loxavo.site',
+  supportEmail: 'support@loxavo.site',
+  privacyEmail: 'support@loxavo.site',
   // App Store link (placeholder — replace with real App Store ID at launch)
-  appStoreUrl: 'https://apps.apple.com/app/vmate-music-player',
+  appStoreUrl: 'https://apps.apple.com/ma/app/vmate-music-player/id1499170849',
   androidUrl: '#',
   twitter: '@vmatemusic',
   twitterUrl: 'https://twitter.com/vmatemusic',

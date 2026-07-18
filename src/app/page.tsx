@@ -649,7 +649,7 @@ function Contact() {
       }
     } catch {
       setStatus('error')
-      setServerMsg('Network error. Please try again or email support@vmate.app.')
+      setServerMsg('Network error. Please try again or email support@loxavo.site.')
     }
   }
 
@@ -686,21 +686,21 @@ function Contact() {
             <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
             <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Your name" error={errors.name}>
-                <Input name="name" placeholder="Jane Doe" className="h-12 bg-white/5 border-white/10" />
+              <Field label="Your name" error={errors.name} htmlFor="name">
+                <Input id="name" name="name" autoComplete="name" placeholder="Jane Doe" className="h-12 bg-white/5 border-white/10" />
               </Field>
-              <Field label="Email" error={errors.email}>
-                <Input name="email" type="email" placeholder="jane@example.com" className="h-12 bg-white/5 border-white/10" />
+              <Field label="Email" error={errors.email} htmlFor="email">
+                <Input id="email" name="email" type="email" autoComplete="email" placeholder="jane@example.com" className="h-12 bg-white/5 border-white/10" />
               </Field>
             </div>
 
             <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              <Field label="Subject" error={errors.subject}>
-                <Input name="subject" placeholder="How can we help?" className="h-12 bg-white/5 border-white/10" />
+              <Field label="Subject" error={errors.subject} htmlFor="subject">
+                <Input id="subject" name="subject" autoComplete="off" placeholder="How can we help?" className="h-12 bg-white/5 border-white/10" />
               </Field>
-              <Field label="Category">
+              <Field label="Category" htmlFor="category">
                 <Select name="category" defaultValue="general">
-                  <SelectTrigger className="h-12 bg-white/5 border-white/10">
+                  <SelectTrigger id="category" className="h-12 bg-white/5 border-white/10">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -716,8 +716,8 @@ function Contact() {
             </div>
 
             <div className="mt-5">
-              <Field label="Message" error={errors.message}>
-                <Textarea name="message" placeholder="Tell us more…" rows={5} className="bg-white/5 border-white/10 resize-none" />
+              <Field label="Message" error={errors.message} htmlFor="message">
+                <Textarea id="message" name="message" autoComplete="off" placeholder="Tell us more…" rows={5} className="bg-white/5 border-white/10 resize-none" />
               </Field>
             </div>
 
@@ -778,10 +778,10 @@ function ContactCard({
   return href ? <a href={href}>{inner}</a> : inner
 }
 
-function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+function Field({ label, error, htmlFor, children }: { label: string; error?: string; htmlFor?: string; children: React.ReactNode }) {
   return (
     <div>
-      <Label className="mb-2 block text-sm font-semibold text-white/80">{label}</Label>
+      <Label htmlFor={htmlFor} className="mb-2 block text-sm font-semibold text-white/80">{label}</Label>
       {children}
       {error && <p className="mt-1.5 text-xs text-red-400">{error}</p>}
     </div>

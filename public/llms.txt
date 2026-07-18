@@ -29,20 +29,20 @@ VMate Music Player is developed by VMate Labs. It is a Music application for iOS
 - 18-language localization
 
 ## Links
-- [Website](https://vmate.app/)
-- [Features](https://vmate.app/#features)
-- [FAQ](https://vmate.app/#faq)
-- [Privacy Policy](https://vmate.app/#privacy)
-- [Terms & Conditions](https://vmate.app/#terms)
-- [Purchase & Subscription Terms](https://vmate.app/#subscription)
-- [Contact Us](https://vmate.app/#contact)
-- [App Store](https://apps.apple.com/app/vmate-music-player)
-- [Sitemap](https://vmate.app/sitemap.xml)
+- [Website](https://loxavo.site/)
+- [Features](https://loxavo.site/#features)
+- [FAQ](https://loxavo.site/#faq)
+- [Privacy Policy](https://loxavo.site/#privacy)
+- [Terms & Conditions](https://loxavo.site/#terms)
+- [Purchase & Subscription Terms](https://loxavo.site/#subscription)
+- [Contact Us](https://loxavo.site/#contact)
+- [App Store](https://apps.apple.com/ma/app/vmate-music-player/id1499170849)
+- [Sitemap](https://loxavo.site/sitemap.xml)
 
 ## Audience
 iPhone owners who want a premium, private, ad-free way to play their local music library offline — including frequent travellers, audiophiles who want equalizer control and lossless output, and listeners who value privacy (no tracking, no account).
 
 ## Contact
-- Support: support@vmate.app
-- Privacy: privacy@vmate.app
+- Support: support@loxavo.site
+- Privacy: support@loxavo.site
 - Response time: 1–2 business days

@@ -82,7 +82,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error('Contact form DB error:', err)
     return NextResponse.json(
-      { error: 'Something went wrong while sending your message. Please try again or email support@vmate.app.' },
+      { error: 'Something went wrong while sending your message. Please try again or email support@loxavo.site.' },
       { status: 500 }
     )
   }

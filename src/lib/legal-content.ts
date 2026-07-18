@@ -91,11 +91,11 @@ export const PRIVACY_POLICY: LegalDoc = {
       subsections: [
         {
           heading: 'GDPR (European Economic Area, UK, Switzerland)',
-          body: 'We act as a data controller for contact-form data. To exercise your rights, email privacy@vmate.app. We respond within 30 days. Where lawful, we may need to verify your identity before acting.',
+          body: 'We act as a data controller for contact-form data. To exercise your rights, email support@loxavo.site. We respond within 30 days. Where lawful, we may need to verify your identity before acting.',
         },
         {
           heading: 'CCPA / CPRA (California)',
-          body: 'California residents may request disclosure of the categories of personal information collected, request deletion, and opt out of any "sale" or "share". VMate does not sell personal information. Submit requests to privacy@vmate.app.',
+          body: 'California residents may request disclosure of the categories of personal information collected, request deletion, and opt out of any "sale" or "share". VMate does not sell personal information. Submit requests to support@loxavo.site.',
         },
       ],
     },
@@ -122,7 +122,7 @@ export const PRIVACY_POLICY: LegalDoc = {
     {
       id: 'contact',
       heading: '12. Contact Us',
-      body: 'If you have questions about this Privacy Policy or your data, contact us at privacy@vmate.app or use the Contact Us page on this website.',
+      body: 'If you have questions about this Privacy Policy or your data, contact us at support@loxavo.site or use the Contact Us page on this website.',
     },
   ],
 }
@@ -218,7 +218,7 @@ export const TERMS_CONDITIONS: LegalDoc = {
     {
       id: 'contact',
       heading: '14. Contact Us',
-      body: 'Questions about these Terms? Contact us at support@vmate.app or through the Contact Us page.',
+      body: 'Questions about these Terms? Contact us at support@loxavo.site or through the Contact Us page.',
     },
   ],
 }
@@ -302,7 +302,7 @@ export const SUBSCRIPTION_TERMS: LegalDoc = {
     {
       id: 'contact',
       heading: '11. Contact Us',
-      body: 'For billing or purchase questions, contact support@vmate.app or use the Contact Us page. For transaction or refund issues, please also contact Apple Support.',
+      body: 'For billing or purchase questions, contact support@loxavo.site or use the Contact Us page. For transaction or refund issues, please also contact Apple Support.',
     },
   ],
 }
@@ -354,7 +354,7 @@ export const FAQS: FAQ[] = [
   },
   {
     q: 'How do I contact VMate support?',
-    a: 'You can reach us through the Contact Us page on this website or by emailing support@vmate.app. We typically respond within 1–2 business days.',
+    a: 'You can reach us through the Contact Us page on this website or by emailing support@loxavo.site. We typically respond within 1–2 business days.',
   },
 ]
 
