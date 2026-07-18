@@ -1,0 +1,48 @@
+# VMate Music Player
+
+> VMate Music Player is a free, offline-first iOS music player app. It lets iPhone users play local audio files without an internet connection, and includes a 10-band equalizer with bass boost, live synced lyrics, hi-res lossless playback, folder-based library browsing, instant search, custom playlists and an immersive Now Playing screen. The app contains no ads and is available in 18 languages.
+
+VMate Music Player is developed by VMate Labs. It is a Music application for iOS (iPhone), free to download with optional in-app purchases and subscriptions (VMate Pro) that unlock the full equalizer, bass boost, hi-res audio output and live lyrics. The app has a 4.9-star App Store rating from over 12,800 ratings and 200,000+ downloads. It is privacy-first: no account required, no personal data collected, no ads, and music never leaves the device.
+
+## Key facts
+- **App name:** VMate Music Player (also: VMate)
+- **Developer:** VMate Labs
+- **Category:** Music (iOS / iPhone)
+- **Price:** Free, with optional VMate Pro in-app purchases and subscriptions
+- **In-app purchase from:** $2.99
+- **Rating:** 4.9 / 5 (12,847 ratings)
+- **Downloads:** 200,000+
+- **Languages:** 18 (English, Arabic, German, French, Spanish, Italian, Portuguese-Brazil, Dutch, Turkish, Russian, Japanese, Korean, Simplified Chinese, Swedish, Danish, Norwegian, Finnish, Polish)
+- **Offline:** Yes — fully offline-first playback
+- **Ads:** None, in free or paid versions
+- **Tracking:** None — no analytics or advertising SDKs
+
+## Core features
+- Offline playback of local audio files (no signal required)
+- 10-band equalizer with presets, bass boost and 3D surround
+- Live, synced lyrics on an immersive Now Playing screen
+- Hi-res / lossless audio output
+- Library organization: albums, artists, folders and playlists
+- Instant search with smart filters and genre browsing
+- Custom playlist creation with drag-and-drop
+- No advertisements, ever
+- 18-language localization
+
+## Links
+- [Website](https://vmate.app/)
+- [Features](https://vmate.app/#features)
+- [FAQ](https://vmate.app/#faq)
+- [Privacy Policy](https://vmate.app/#privacy)
+- [Terms & Conditions](https://vmate.app/#terms)
+- [Purchase & Subscription Terms](https://vmate.app/#subscription)
+- [Contact Us](https://vmate.app/#contact)
+- [App Store](https://apps.apple.com/app/vmate-music-player)
+- [Sitemap](https://vmate.app/sitemap.xml)
+
+## Audience
+iPhone owners who want a premium, private, ad-free way to play their local music library offline — including frequent travellers, audiophiles who want equalizer control and lossless output, and listeners who value privacy (no tracking, no account).
+
+## Contact
+- Support: support@vmate.app
+- Privacy: privacy@vmate.app
+- Response time: 1–2 business days

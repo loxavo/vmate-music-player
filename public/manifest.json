@@ -1,0 +1,19 @@
+{
+  "name": "VMate Music Player",
+  "short_name": "VMate",
+  "description": "Your Music. Offline. Anywhere. — A premium offline music player for iPhone with a 10-band equalizer, live lyrics, hi-res audio and zero ads.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "categories": ["music", "entertainment", "utilities"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
