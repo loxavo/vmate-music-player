@@ -1,19 +1,12 @@
 {
-  "name": "VMate Music Player",
-  "short_name": "VMate",
-  "description": "Your Music. Offline. Anywhere. — A premium offline music player for iPhone with a 10-band equalizer, live lyrics, hi-res audio and zero ads.",
+  "name": "Loxavo Studios",
+  "short_name": "Loxavo Studios",
+  "description": "Loxavo Studios crafts beautifully designed, offline-first iOS apps with a focus on privacy, performance and a premium user experience.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "orientation": "portrait",
-  "categories": ["music", "entertainment", "utilities"],
-  "icons": [
-    {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ]
+  "categories": ["productivity", "music", "utilities"],
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
 }

@@ -2,169 +2,121 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import './globals.css'
 import { Toaster } from '@/components/ui/toaster'
-import { SITE, ENTITY_SUMMARY } from '@/lib/site-config'
-import { FAQS } from '@/lib/legal-content'
+import { APPS, STUDIO } from '@/lib/apps-registry'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap',
-})
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'], display: 'swap' })
 
-// ---------------------------------------------------------------
-// SEO metadata — comprehensive, optimised for search engines + AI
-// ---------------------------------------------------------------
+const allFaqs = APPS.flatMap((a) => a.faqs.map((f) => ({ q: f.q, a: f.a, app: a.shortName })))
+
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
+  metadataBase: new URL(STUDIO.url),
   title: {
-    default: `${SITE.name} — ${SITE.tagline} | Offline Music Player for iPhone`,
-    template: `%s | ${SITE.name}`,
+    default: `${STUDIO.name} — ${STUDIO.tagline} | Premium iOS Apps`,
+    template: `%s | ${STUDIO.name}`,
   },
-  description: SITE.description,
-  applicationName: SITE.name,
-  generator: 'Next.js',
+  description: STUDIO.description,
+  applicationName: STUDIO.name,
   referrer: 'origin-when-cross-origin',
   keywords: [
+    STUDIO.name,
+    'iOS apps',
+    'iPhone apps',
+    'offline apps',
+    'privacy first apps',
+    'no ads apps',
     'VMate Music Player',
     'offline music player',
-    'iPhone music player',
-    'offline music app',
-    'music player no ads',
-    'equalizer music app',
-    'lossless audio player',
-    'local music player iOS',
-    'lyrics music app',
-    'play music offline',
-    'free music player iPhone',
-    'VMate',
+    'VoiceScribe',
+    'AI note writer',
+    'voice to text',
+    'transcription app',
+    'meeting notes',
+    'WhisperKit',
+    'offline transcription',
   ],
-  authors: [{ name: SITE.developer, url: SITE.url }],
-  creator: SITE.developer,
-  publisher: SITE.developer,
-  category: SITE.category,
-  formatDetection: { telephone: false, address: false, email: false },
-  alternates: {
-    canonical: SITE.url,
-  },
+  authors: [{ name: STUDIO.name, url: STUDIO.url }],
+  creator: STUDIO.name,
+  publisher: STUDIO.name,
+  alternates: { canonical: STUDIO.url },
   openGraph: {
     type: 'website',
-    locale: SITE.locale,
-    url: SITE.url,
-    siteName: SITE.name,
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
-    images: [
-      {
-        url: '/appstore-shots/assets/app-ui/nowplaying.jpeg',
-        width: 1080,
-        height: 2335,
-        alt: `${SITE.name} — Now Playing screen`,
-      },
-    ],
+    locale: STUDIO.locale,
+    url: STUDIO.url,
+    siteName: STUDIO.name,
+    title: `${STUDIO.name} — ${STUDIO.tagline}`,
+    description: STUDIO.description,
+    images: [{ url: '/icon.svg', width: 512, height: 512, alt: `${STUDIO.name} logo` }],
   },
   twitter: {
     card: 'summary_large_image',
-    site: SITE.twitter,
-    creator: SITE.twitter,
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
-    images: ['/appstore-shots/assets/app-ui/nowplaying.jpeg'],
+    site: STUDIO.twitter,
+    creator: STUDIO.twitter,
+    title: `${STUDIO.name} — ${STUDIO.tagline}`,
+    description: STUDIO.description,
+    images: ['/icon.svg'],
   },
   robots: {
     index: true,
     follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
-    },
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
   },
-  icons: {
-    icon: '/icon.svg',
-    apple: '/icon.svg',
-  },
+  icons: { icon: '/icon.svg', apple: '/icon.svg' },
   manifest: '/manifest.json',
 }
 
-// ---------------------------------------------------------------
-// JSON-LD structured data — for rich results & AI citation (GEO)
-// ---------------------------------------------------------------
+// JSON-LD: Organization + WebSite + ItemList of apps + FAQPage (combined) + BreadcrumbList
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'SoftwareApplication',
-      '@id': `${SITE.url}/#software`,
-      name: SITE.name,
-      alternateName: SITE.shortName,
-      description: ENTITY_SUMMARY,
-      url: SITE.url,
-      applicationCategory: 'MusicApplication',
-      operatingSystem: 'iOS',
-      softwareVersion: SITE.version,
-      datePublished: SITE.releaseDate,
-      dateModified: SITE.releaseDate,
-      downloadUrl: SITE.appStoreUrl,
-      offers: [
-        {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-          description: 'Free download with optional in-app purchases',
-        },
-        {
-          '@type': 'Offer',
-          price: '2.99',
-          priceCurrency: 'USD',
-          description: 'VMate Pro subscription (per month)',
-        },
-      ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: SITE.rating,
-        ratingCount: SITE.ratingCount,
-        bestRating: '5',
-        worstRating: '1',
-      },
-      featureList: [
-        'Offline music playback',
-        '10-band equalizer with bass boost',
-        'Live synced lyrics',
-        'Hi-res lossless audio',
-        'Folder and library browsing',
-        'Instant search',
-        'Custom playlists',
-        'No advertisements',
-        '18 languages',
-      ],
-      inLanguage: ['en', 'ar', 'de', 'fr', 'es', 'it', 'pt-BR', 'nl', 'tr', 'ru', 'ja', 'ko', 'zh-CN', 'sv', 'da', 'no', 'fi', 'pl'],
-      author: { '@id': `${SITE.url}/#org` },
-      publisher: { '@id': `${SITE.url}/#org` },
-    },
-    {
       '@type': 'Organization',
-      '@id': `${SITE.url}/#org`,
-      name: SITE.developer,
-      url: SITE.url,
-      email: SITE.supportEmail,
-      sameAs: [SITE.twitterUrl, SITE.instagramUrl],
+      '@id': `${STUDIO.url}/#org`,
+      name: STUDIO.name,
+      url: STUDIO.url,
+      description: STUDIO.description,
+      email: STUDIO.email,
+      sameAs: [STUDIO.twitterUrl, STUDIO.instagramUrl],
     },
     {
       '@type': 'WebSite',
-      '@id': `${SITE.url}/#website`,
-      url: SITE.url,
-      name: SITE.name,
-      description: SITE.description,
-      publisher: { '@id': `${SITE.url}/#org` },
+      '@id': `${STUDIO.url}/#website`,
+      url: STUDIO.url,
+      name: STUDIO.name,
+      description: STUDIO.description,
+      publisher: { '@id': `${STUDIO.url}/#org` },
       inLanguage: 'en',
     },
     {
+      '@type': 'ItemList',
+      '@id': `${STUDIO.url}/#apps`,
+      name: `${STUDIO.name} apps`,
+      itemListElement: APPS.filter((a) => a.available).map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'SoftwareApplication',
+          name: a.name,
+          alternateName: a.shortName,
+          description: a.longDescription,
+          url: `${STUDIO.url}/#${a.slug}`,
+          applicationCategory: a.category === 'Music' ? 'MusicApplication' : 'ProductivityApplication',
+          operatingSystem: 'iOS',
+          softwareVersion: a.version,
+          datePublished: a.releaseDate,
+          downloadUrl: a.appStoreUrl,
+          offers: [{ '@type': 'Offer', price: '0', priceCurrency: 'USD', description: `${a.price} download with optional in-app purchases` }],
+          aggregateRating: { '@type': 'AggregateRating', ratingValue: a.rating, ratingCount: a.ratingCount, bestRating: '5', worstRating: '1' },
+          featureList: a.features.map((f) => f.title),
+          inLanguage: 'en',
+          author: { '@id': `${STUDIO.url}/#org` },
+          publisher: { '@id': `${STUDIO.url}/#org` },
+        },
+      })),
+    },
+    {
       '@type': 'FAQPage',
-      '@id': `${SITE.url}/#faq`,
-      mainEntity: FAQS.map((f) => ({
+      '@id': `${STUDIO.url}/#faq`,
+      mainEntity: allFaqs.map((f) => ({
         '@type': 'Question',
         name: f.q,
         acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -172,31 +124,23 @@ const jsonLd = {
     },
     {
       '@type': 'BreadcrumbList',
-      '@id': `${SITE.url}/#breadcrumb`,
+      '@id': `${STUDIO.url}/#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
-        { '@type': 'ListItem', position: 2, name: 'Features', item: `${SITE.url}/#features` },
-        { '@type': 'ListItem', position: 3, name: 'Privacy Policy', item: `${SITE.url}/#privacy` },
-        { '@type': 'ListItem', position: 4, name: 'Contact Us', item: `${SITE.url}/#contact` },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: STUDIO.url },
+        { '@type': 'ListItem', position: 2, name: 'Apps', item: `${STUDIO.url}/#home` },
+        ...APPS.filter((a) => a.available).map((a, i) => ({ '@type': 'ListItem', position: i + 3, name: a.name, item: `${STUDIO.url}/#${a.slug}` })),
       ],
     },
   ],
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
-      <body
-        className={`${geistSans.variable} antialiased bg-background text-foreground`}
-      >
+      <body className={`${geistSans.variable} antialiased bg-background text-foreground`}>
         {children}
         <Toaster />
       </body>

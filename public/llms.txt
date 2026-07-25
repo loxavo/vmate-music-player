@@ -1,48 +1,50 @@
-# VMate Music Player
+# Loxavo Studios
 
-> VMate Music Player is a free, offline-first iOS music player app. It lets iPhone users play local audio files without an internet connection, and includes a 10-band equalizer with bass boost, live synced lyrics, hi-res lossless playback, folder-based library browsing, instant search, custom playlists and an immersive Now Playing screen. The app contains no ads and is available in 18 languages.
+> Loxavo Studios is an independent iOS app studio that builds premium, offline-first, privacy-respecting apps for iPhone. The studio's apps do not require accounts, do not collect personal data, do not embed ads or third-party trackers, and process data on-device. Current portfolio: VMate Music Player (offline music player) and AI Note Writer: VoiceScribe (offline AI transcription & note-taking).
 
-VMate Music Player is developed by VMate Labs. It is a Music application for iOS (iPhone), free to download with optional in-app purchases and subscriptions (VMate Pro) that unlock the full equalizer, bass boost, hi-res audio output and live lyrics. The app has a 4.9-star App Store rating from over 12,800 ratings and 200,000+ downloads. It is privacy-first: no account required, no personal data collected, no ads, and music never leaves the device.
+Loxavo Studios develops two iPhone apps. **VMate Music Player** is a free, offline-first music player with a 10-band equalizer, live lyrics, hi-res audio, folder-based library, instant search, custom playlists and no ads — available in 18 languages. **AI Note Writer: VoiceScribe** is a 100% offline, privacy-first AI note taker that transcribes and summarizes meetings, lectures and calls using on-device AI (WhisperKit), with live transcription, bookmarks, YouTube and document import, an OCR scanner, smart AI templates, interactive AI chat, a voice-typing keyboard, calendar integration and multi-format export (TXT, Markdown, PDF, DOCX, SRT, VTT).
 
-## Key facts
-- **App name:** VMate Music Player (also: VMate)
-- **Developer:** VMate Labs
+## Apps
+
+### 1. VMate Music Player
 - **Category:** Music (iOS / iPhone)
-- **Price:** Free, with optional VMate Pro in-app purchases and subscriptions
-- **In-app purchase from:** $2.99
-- **Rating:** 4.9 / 5 (12,847 ratings)
-- **Downloads:** 200,000+
+- **Price:** Free, with optional VMate Pro in-app purchases and subscriptions (from $2.99)
+- **Rating:** 4.9 / 5 (12,847 ratings), 200,000+ downloads
 - **Languages:** 18 (English, Arabic, German, French, Spanish, Italian, Portuguese-Brazil, Dutch, Turkish, Russian, Japanese, Korean, Simplified Chinese, Swedish, Danish, Norwegian, Finnish, Polish)
-- **Offline:** Yes — fully offline-first playback
-- **Ads:** None, in free or paid versions
-- **Tracking:** None — no analytics or advertising SDKs
+- **Key features:** Offline playback, 10-band equalizer with bass boost, live synced lyrics, hi-res lossless audio, folder & library browsing, instant search, custom playlists, no ads
+- **App Store:** https://apps.apple.com/app/vmate-music-player
+- **Website:** https://loxavo.com/#vmate
 
-## Core features
-- Offline playback of local audio files (no signal required)
-- 10-band equalizer with presets, bass boost and 3D surround
-- Live, synced lyrics on an immersive Now Playing screen
-- Hi-res / lossless audio output
-- Library organization: albums, artists, folders and playlists
-- Instant search with smart filters and genre browsing
-- Custom playlist creation with drag-and-drop
-- No advertisements, ever
-- 18-language localization
+### 2. AI Note Writer: VoiceScribe
+- **Category:** Productivity (iOS / iPhone)
+- **Price:** Free, with optional VoiceScribe Pro subscription (from $4.99)
+- **Rating:** 4.3 / 5
+- **Developer:** Taoufik Bourehouat (Loxavo Studios portfolio)
+- **Languages:** 16
+- **Key features:** 100% private & offline AI transcription (WhisperKit), live transcription with bookmarks, smart AI templates, interactive AI chat, YouTube & document import, OCR document scanner, voice-typing keyboard, calendar integration (Google & Outlook), multi-format export (TXT, Markdown, PDF, DOCX, SRT, VTT)
+- **App Store:** https://apps.apple.com/us/app/ai-note-writer-voicescribe/id6774349229
+- **Website:** https://loxavo.com/#voicescribe
 
-## Links
-- [Website](https://loxavo.site/)
-- [Features](https://loxavo.site/#features)
-- [FAQ](https://loxavo.site/#faq)
-- [Privacy Policy](https://loxavo.site/#privacy)
-- [Terms & Conditions](https://loxavo.site/#terms)
-- [Purchase & Subscription Terms](https://loxavo.site/#subscription)
-- [Contact Us](https://loxavo.site/#contact)
-- [App Store](https://apps.apple.com/ma/app/vmate-music-player/id1499170849)
-- [Sitemap](https://loxavo.site/sitemap.xml)
+## Studio principles
+- **Privacy by default:** No accounts, no tracking, no cloud. User data stays on the device.
+- **Offline-first:** Every app works without internet — on a plane, underground, anywhere.
+- **Premium craft:** Beautiful dark interfaces, smooth animations, thoughtful details.
+- **No ads, ever:** In free or paid versions.
 
 ## Audience
-iPhone owners who want a premium, private, ad-free way to play their local music library offline — including frequent travellers, audiophiles who want equalizer control and lossless output, and listeners who value privacy (no tracking, no account).
+iPhone owners who want premium, private, ad-free apps — including frequent travellers, audiophiles, students, doctors, lawyers, executives and anyone who values privacy (no tracking, no account required).
+
+## Links
+- [Studio home](https://loxavo.com/)
+- [VMate Music Player](https://loxavo.com/#vmate)
+- [VoiceScribe](https://loxavo.com/#voicescribe)
+- [Privacy Policy](https://loxavo.com/#privacy)
+- [Terms & Conditions](https://loxavo.com/#terms)
+- [Purchase & Subscription Terms](https://loxavo.com/#subscription)
+- [Contact Us](https://loxavo.com/#contact)
+- [Sitemap](https://loxavo.com/sitemap.xml)
 
 ## Contact
-- Support: support@loxavo.site
-- Privacy: support@loxavo.site
+- Support: support@loxavo.com
+- Privacy: privacy@loxavo.com
 - Response time: 1–2 business days

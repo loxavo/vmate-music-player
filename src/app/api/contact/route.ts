@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
-// Simple in-memory rate limiting per IP (resets on server restart).
-// Keeps the contact endpoint safe from abuse without extra infra.
-const RATE_WINDOW_MS = 60_000 // 1 minute
+const RATE_WINDOW_MS = 60_000
 const RATE_MAX = 5
 const hits = new Map<string, { count: number; first: number }>()
 
@@ -50,13 +48,10 @@ export async function POST(req: Request) {
   const subject = String(data?.subject ?? '').trim()
   const message = String(data?.message ?? '').trim()
   const categoryRaw = String(data?.category ?? 'general').trim()
-  const category = (CATEGORIES as readonly string[]).includes(categoryRaw)
-    ? categoryRaw
-    : 'general'
-  // honeypot — bots tend to fill this hidden field
+  const category = (CATEGORIES as readonly string[]).includes(categoryRaw) ? categoryRaw : 'general'
+  const app = String(data?.app ?? 'general').trim().slice(0, 40)
   const website = String(data?.website ?? '').trim()
   if (website) {
-    // silently accept but do nothing (looks like success to bots)
     return NextResponse.json({ ok: true, id: 'spam' })
   }
 
@@ -72,17 +67,17 @@ export async function POST(req: Request) {
 
   try {
     const record = await db.contactMessage.create({
-      data: { name, email, subject, message, category },
+      data: { name, email, subject, message, category, app },
     })
     return NextResponse.json({
       ok: true,
       id: record.id,
-      message: 'Thanks for reaching out! We\'ll get back to you within 1–2 business days.',
+      message: "Thanks for reaching out! We'll get back to you within 1–2 business days.",
     })
   } catch (err) {
     console.error('Contact form DB error:', err)
     return NextResponse.json(
-      { error: 'Something went wrong while sending your message. Please try again or email support@loxavo.site.' },
+      { error: 'Something went wrong while sending your message. Please try again or email support@vmate.app.' },
       { status: 500 }
     )
   }
@@ -90,9 +85,9 @@ export async function POST(req: Request) {
 
 export async function GET() {
   return NextResponse.json({
-    endpoint: 'VMate Music Player contact form',
+    endpoint: 'Loxavo Studios contact form',
     method: 'POST',
-    fields: ['name', 'email', 'subject', 'message', 'category'],
+    fields: ['name', 'email', 'subject', 'message', 'category', 'app'],
     categories: CATEGORIES,
   })
 }
