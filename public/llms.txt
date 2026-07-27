@@ -13,7 +13,7 @@ Loxavo Studios develops two iPhone apps. **VMate Music Player** is a free, offli
 - **Languages:** 18 (English, Arabic, German, French, Spanish, Italian, Portuguese-Brazil, Dutch, Turkish, Russian, Japanese, Korean, Simplified Chinese, Swedish, Danish, Norwegian, Finnish, Polish)
 - **Key features:** Offline playback, 10-band equalizer with bass boost, live synced lyrics, hi-res lossless audio, folder & library browsing, instant search, custom playlists, no ads
 - **App Store:** https://apps.apple.com/app/vmate-music-player
-- **Website:** https://loxavo.com/#vmate
+- **Website:** https://loxavo.site/#vmate
 
 ### 2. AI Note Writer: VoiceScribe
 - **Category:** Productivity (iOS / iPhone)
@@ -23,7 +23,7 @@ Loxavo Studios develops two iPhone apps. **VMate Music Player** is a free, offli
 - **Languages:** 16
 - **Key features:** 100% private & offline AI transcription (WhisperKit), live transcription with bookmarks, smart AI templates, interactive AI chat, YouTube & document import, OCR document scanner, voice-typing keyboard, calendar integration (Google & Outlook), multi-format export (TXT, Markdown, PDF, DOCX, SRT, VTT)
 - **App Store:** https://apps.apple.com/us/app/ai-note-writer-voicescribe/id6774349229
-- **Website:** https://loxavo.com/#voicescribe
+- **Website:** https://loxavo.site/#voicescribe
 
 ## Studio principles
 - **Privacy by default:** No accounts, no tracking, no cloud. User data stays on the device.
@@ -35,16 +35,16 @@ Loxavo Studios develops two iPhone apps. **VMate Music Player** is a free, offli
 iPhone owners who want premium, private, ad-free apps — including frequent travellers, audiophiles, students, doctors, lawyers, executives and anyone who values privacy (no tracking, no account required).
 
 ## Links
-- [Studio home](https://loxavo.com/)
-- [VMate Music Player](https://loxavo.com/#vmate)
-- [VoiceScribe](https://loxavo.com/#voicescribe)
-- [Privacy Policy](https://loxavo.com/#privacy)
-- [Terms & Conditions](https://loxavo.com/#terms)
-- [Purchase & Subscription Terms](https://loxavo.com/#subscription)
-- [Contact Us](https://loxavo.com/#contact)
-- [Sitemap](https://loxavo.com/sitemap.xml)
+- [Studio home](https://loxavo.site/)
+- [VMate Music Player](https://loxavo.site/#vmate)
+- [VoiceScribe](https://loxavo.site/#voicescribe)
+- [Privacy Policy](https://loxavo.site/#privacy)
+- [Terms & Conditions](https://loxavo.site/#terms)
+- [Purchase & Subscription Terms](https://loxavo.site/#subscription)
+- [Contact Us](https://loxavo.site/#contact)
+- [Sitemap](https://loxavo.site/sitemap.xml)
 
 ## Contact
-- Support: support@loxavo.com
-- Privacy: privacy@loxavo.com
+- Support: support@loxavo.site
+- Privacy: privacy@loxavo.site
 - Response time: 1–2 business days

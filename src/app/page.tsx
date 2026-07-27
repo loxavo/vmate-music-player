@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, type FormEvent } from 'react'
 import { APPS, STUDIO, ROSE, GREEN, type AppShowcase } from '@/lib/apps-registry'
-import { PRIVACY_POLICY, TERMS_CONDITIONS, SUBSCRIPTION_TERMS, type LegalDoc } from '@/lib/legal-content'
+import { LEGAL_DOCS, LEGAL_NAV, getLegalDoc, type LegalDoc, type LegalLink } from '@/lib/legal-content'
 import { Icon } from '@/components/landing/icon'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,11 +15,12 @@ import { Badge } from '@/components/ui/badge'
 
 const WHITE = '#FFFFFF'
 
-// View routing: home | <app-slug> | privacy | terms | subscription | contact
+// View routing: home | <app-slug> | <legal-view> | contact
 type View = 'home' | string
 
 const isAppSlug = (v: string) => APPS.some((a) => a.slug === v)
 const getApp = (v: string) => APPS.find((a) => a.slug === v)
+const isLegalView = (v: string) => !!getLegalDoc(v)
 
 // -----------------------------------------------------------------
 // Brand mark — Loxavo Studios logo (L monogram + creative spark)
@@ -431,13 +432,15 @@ function PhoneFrame({ image, alt, accent, small = false }: { image: string; alt:
 }
 
 // -----------------------------------------------------------------
-// Legal page
+// Legal page renderer — header, table of contents, sections,
+// internal cross-references and a "Questions?" CTA.
 // -----------------------------------------------------------------
-function LegalPage({ doc }: { doc: LegalDoc }) {
+function LegalPage({ doc, onNavigate }: { doc: LegalDoc; onNavigate: (v: View) => void }) {
+  const toc = doc.sections.filter((s) => s.heading)
   return (
     <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <header className="border-b border-white/10 pb-8">
-        <div className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: GREEN }}>Legal</div>
+        <div className="text-xs font-bold uppercase tracking-[0.2em]" style={{ color: GREEN }}>Legal Center</div>
         <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">{doc.title}</h1>
         <div className="mt-4 flex flex-wrap gap-4 text-sm text-white/50">
           <span>Last updated: <span className="text-white/80">{doc.lastUpdated}</span></span>
@@ -445,7 +448,36 @@ function LegalPage({ doc }: { doc: LegalDoc }) {
           <span>Effective: <span className="text-white/80">{doc.effective}</span></span>
         </div>
       </header>
+
       <p className="mt-8 text-base leading-relaxed text-white/70">{doc.intro}</p>
+
+      {/* Table of contents */}
+      {toc.length > 0 && (
+        <nav aria-label="Table of contents" className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6">
+          <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/50">
+            <Icon name="layers" size={16} color={GREEN} /> Table of contents
+          </div>
+          <ol className="grid gap-1.5 sm:grid-cols-2">
+            {toc.map((s) => (
+              <li key={s.id}>
+                <a
+                  href={`#${s.id}`}
+                  className="text-sm text-white/70 transition-colors hover:text-white"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const el = document.getElementById(s.id)
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    if (typeof window !== 'undefined') window.history.replaceState(null, '', `#${s.id}`)
+                  }}
+                >
+                  {s.heading}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
       <div className="mt-10 space-y-10">
         {doc.sections.map((sec) => (
           <section key={sec.id} id={sec.id} className="scroll-mt-24">
@@ -470,10 +502,64 @@ function LegalPage({ doc }: { doc: LegalDoc }) {
                 ))}
               </div>
             )}
+            {sec.related && sec.related.length > 0 && (
+              <div className="mt-5 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-white/40">Related:</span>
+                {sec.related.map((l) => (
+                  <LegalChip key={l.view} link={l} onNavigate={onNavigate} />
+                ))}
+              </div>
+            )}
           </section>
         ))}
       </div>
+
+      {/* End-of-document related links */}
+      {doc.related && doc.related.length > 0 && (
+        <div className="mt-12 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+          <h2 className="text-base font-bold">Related documents</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {doc.related.map((l) => (
+              <LegalChip key={l.view} link={l} onNavigate={onNavigate} />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* "Questions?" CTA */}
+      <div className="mt-10 overflow-hidden rounded-[2rem] border border-white/10 p-7 sm:p-9" style={{ background: `linear-gradient(135deg, ${GREEN}14, ${ROSE}10)` }}>
+        <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-xl font-extrabold tracking-tight sm:text-2xl">Questions?</h2>
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-white/70">
+              If anything in this document is unclear, or you would like to exercise a right described here, our team is happy to help. We aim to respond within 1–2 business days.
+            </p>
+          </div>
+          <button
+            onClick={() => onNavigate('contact')}
+            className="inline-flex shrink-0 items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-bold text-black transition-transform hover:scale-[1.03]"
+          >
+            <Icon name="mail" size={18} color="#000" /> Contact us
+          </button>
+        </div>
+      </div>
     </article>
+  )
+}
+
+// Internal cross-reference chip used inside legal documents.
+function LegalChip({ link, onNavigate }: { link: LegalLink; onNavigate: (v: View) => void }) {
+  const target = getLegalDoc(link.view)
+  const color = target?.view === 'contact' ? ROSE : GREEN
+  return (
+    <button
+      onClick={() => onNavigate(link.view)}
+      className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold text-white/80 transition-colors hover:text-white"
+      style={{ borderColor: `${color}40`, background: `${color}12` }}
+    >
+      <Icon name="chevronRight" size={12} color={color} />
+      {link.label}
+    </button>
   )
 }
 
@@ -500,7 +586,7 @@ function Contact() {
         setStatus('success'); setServerMsg(json.message || 'Message sent!'); form.reset()
       }
     } catch {
-      setStatus('error'); setServerMsg('Network error. Please try again or email support@vmate.app.')
+      setStatus('error'); setServerMsg('Network error. Please try again or email support@loxavo.site.')
     }
   }
 
@@ -621,10 +707,13 @@ function Footer({ onNavigate }: { onNavigate: (v: View) => void }) {
           <div>
             <div className="text-sm font-bold uppercase tracking-wider text-white/40">Legal</div>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li><button onClick={() => onNavigate('privacy')} className="text-white/70 hover:text-white">Privacy Policy</button></li>
-              <li><button onClick={() => onNavigate('terms')} className="text-white/70 hover:text-white">Terms &amp; Conditions</button></li>
-              <li><button onClick={() => onNavigate('subscription')} className="text-white/70 hover:text-white">Subscription Terms</button></li>
-              <li><button onClick={() => onNavigate('contact')} className="text-white/70 hover:text-white">Contact Us</button></li>
+              {LEGAL_NAV.map((item) => (
+                <li key={item.view}>
+                  <button onClick={() => onNavigate(item.view)} className="text-white/70 transition-colors hover:text-white">
+                    {item.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -656,16 +745,54 @@ export default function Home() {
     return () => window.removeEventListener('hashchange', onHash)
   }, [])
 
+  // SEO + document title per active view. For legal views this also updates
+  // meta description, canonical link and Open Graph / Twitter tags so each
+  // legal document has its own SEO metadata. (Hash-based routing keeps the
+  // existing architecture intact; the head is updated client-side on view
+  // change, which modern crawlers handle.)
   useEffect(() => {
-    const titles: Record<string, string> = {
-      home: `${STUDIO.name} — ${STUDIO.tagline} | Premium iOS Apps`,
-      privacy: `Privacy Policy — ${STUDIO.name}`,
-      terms: `Terms & Conditions — ${STUDIO.name}`,
-      subscription: `Purchase & Subscription Terms — ${STUDIO.name}`,
-      contact: `Contact Us — ${STUDIO.name}`,
-    }
     const app = getApp(view)
-    document.title = app ? `${app.name} — ${app.tagline} | ${STUDIO.name}` : (titles[view] || titles.home)
+    const legal = getLegalDoc(view)
+    let title: string
+    let description: string
+    let canonical: string
+
+    if (app) {
+      title = `${app.name} — ${app.tagline} | ${STUDIO.name}`
+      description = app.description
+      canonical = `${STUDIO.url}/#${app.slug}`
+    } else if (legal) {
+      title = legal.seo.title
+      description = legal.seo.description
+      canonical = legal.seo.canonical
+    } else if (view === 'contact') {
+      title = `Contact Us — ${STUDIO.name}`
+      description = 'Contact Loxavo for support, feedback, billing or partnership inquiries about any application published by Loxavo. We respond within 1–2 business days.'
+      canonical = `${STUDIO.url}/#contact`
+    } else {
+      title = `${STUDIO.name} — ${STUDIO.tagline} | Premium iOS Apps`
+      description = STUDIO.description
+      canonical = `${STUDIO.url}/`
+    }
+
+    document.title = title
+    setMeta('description', description)
+    setMeta('og:title', title, true)
+    setMeta('og:description', description, true)
+    setMeta('og:url', canonical, true)
+    setMeta('twitter:title', title)
+    setMeta('twitter:description', description)
+    setMeta('twitter:card', 'summary_large_image')
+    setCanonical(canonical)
+
+    // Next.js App Router re-applies the static <title> from metadata during
+    // hydration, which can overwrite a title set synchronously on a deep-link
+    // load (e.g. /#privacy). Re-apply on the next frame so the per-view title
+    // persists past hydration.
+    requestAnimationFrame(() => {
+      document.title = title
+    })
+
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }, [view])
 
@@ -686,12 +813,37 @@ export default function Home() {
             <AppDetail app={currentApp} onNavigate={navigate} />
           </div>
         )}
-        <div className={view === 'privacy' ? 'block' : 'hidden'}><LegalPage doc={PRIVACY_POLICY} /></div>
-        <div className={view === 'terms' ? 'block' : 'hidden'}><LegalPage doc={TERMS_CONDITIONS} /></div>
-        <div className={view === 'subscription' ? 'block' : 'hidden'}><LegalPage doc={SUBSCRIPTION_TERMS} /></div>
+        {/* Legal Center — all documents rendered and kept in the DOM for SEO. */}
+        {LEGAL_DOCS.map((doc) => (
+          <div key={doc.view} className={view === doc.view ? 'block' : 'hidden'}>
+            <LegalPage doc={doc} onNavigate={navigate} />
+          </div>
+        ))}
         <div className={view === 'contact' ? 'block' : 'hidden'}><Contact /></div>
       </main>
       <Footer onNavigate={navigate} />
     </div>
   )
+}
+
+// --- SEO head helpers (no routing change; updates DOM meta on view switch) ---
+function setMeta(name: string, content: string, property = false) {
+  const attr = property ? 'property' : 'name'
+  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${name}"]`)
+  if (!el) {
+    el = document.createElement('meta')
+    el.setAttribute(attr, name)
+    document.head.appendChild(el)
+  }
+  el.setAttribute('content', content)
+}
+
+function setCanonical(href: string) {
+  let el = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+  if (!el) {
+    el = document.createElement('link')
+    el.setAttribute('rel', 'canonical')
+    document.head.appendChild(el)
+  }
+  el.setAttribute('href', href)
 }

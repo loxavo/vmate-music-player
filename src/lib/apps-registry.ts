@@ -190,9 +190,9 @@ export const STUDIO = {
   tagline: 'Building premium, privacy-first apps for iPhone',
   description:
     'Loxavo Studios crafts beautifully designed, offline-first iOS apps with a focus on privacy, performance and a premium user experience. Our portfolio spans music and productivity.',
-  email: 'support@loxavo.com',
-  privacyEmail: 'privacy@loxavo.com',
-  url: 'https://loxavo.com',
+  email: 'support@loxavo.site',
+  privacyEmail: 'privacy@loxavo.site',
+  url: 'https://loxavo.site',
   twitter: '@loxavostudios',
   twitterUrl: 'https://twitter.com/loxavostudios',
   instagramUrl: 'https://instagram.com/loxavostudios',
